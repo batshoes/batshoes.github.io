@@ -1,7 +1,7 @@
-body {
-  background-image: url(./Images/background-min.jpeg); }
-
-div {
-  text-align: center; }
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab);
+.header {
+  text-align: center;
+  font-family: "Josefin Slab", serif;
+  font-size: 20px; }
 
 /*# sourceMappingURL=main.css.map */
