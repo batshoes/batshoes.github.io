@@ -1,6 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+body {
+  font-family: "Raleway", sans-serif; }
+
+#outer {
+  width: 100vw; }
+
 .header {
   text-align: center;
-  font-family: 'Josefin sans', sans-serif;
-  font-size: 20px; }
+  font-size: 20px;
+  margin-top: 20px; }
+
+.main-nav {
+  width: 200px;
+  height: 100vh;
+  float: left;
+  display: inline;
+  border-right: thin solid black; }
+  .main-nav ul {
+    list-style: none; }
+  .main-nav .fill {
+    height: 60vh; }
+  .main-nav img {
+    margin-left: 10px; }
+
+.content {
+  width: 80vw;
+  padding-left: 230px; }
+  .content .right {
+    text-align: right; }
 
 /*# sourceMappingURL=main.css.map */
