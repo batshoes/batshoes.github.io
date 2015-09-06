@@ -1,9 +1,44 @@
 @import "bourbon/bourbon";  
 @import 'defaults';
-@import url(https://fonts.googleapis.com/css?family=Josefin+Slab);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+body {
+  font-family: $font;
+}
+
+#outer {
+  width: 100vw;
+}
 
 .header {
   text-align: center;
-  font-family: $font;
   font-size: 20px;
+  margin-top: 20px;
 }
+
+.main-nav {
+  width: 200px;
+  height: 100vh;
+  float: left;
+  display: inline;
+  border-right: thin solid black;
+
+  ul {
+      list-style: none;
+    }
+
+  .fill {
+    height: 60vh;
+  }
+
+  img {
+    margin-left: 10px; 
+  }
+}
+.content {
+  width: 80vw;
+  padding-left: 230px;
+    .right {
+  text-align: right;
+}
+}
+
