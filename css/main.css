@@ -167,7 +167,7 @@ figure.effect-layla:hover img {
 body {
   font-family: "Raleway", sans-serif;
   color: #5aebad;
-  background-color: #383838; }
+  background-color: #707070; }
 
 a {
   outline: none;
@@ -195,7 +195,7 @@ a:hover, a:focus {
   .main-nav ul {
     list-style: none; }
   .main-nav .fill {
-    height: 80vh; }
+    height: 60vh; }
   .main-nav img {
     margin-left: 10px; }
 
