@@ -38,8 +38,18 @@ body {
 .content {
   width: 80vw;
   padding-left: 230px;
+
     .right {
   text-align: right;
 }
 }
-
+.projects {
+    display: block;
+      img {
+        height: 250px;
+        width: 500px;
+        margin: 3px;
+        float: left;
+        display: inline;
+      }
+  }
