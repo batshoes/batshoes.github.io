@@ -29,4 +29,13 @@ body {
   .content .right {
     text-align: right; }
 
+.projects {
+  display: block; }
+  .projects img {
+    height: 250px;
+    width: 500px;
+    margin: 3px;
+    float: left;
+    display: inline; }
+
 /*# sourceMappingURL=main.css.map */
