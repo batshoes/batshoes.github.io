@@ -141,7 +141,7 @@ figure.effect-layla p {
   transition: opacity 0.35s, transform 0.35s; }
 
 figure.effect-layla:hover img {
-  opacity: 0.7;
+  opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0); }
 
@@ -167,7 +167,7 @@ figure.effect-layla:hover img {
 body {
   font-family: "Raleway", sans-serif;
   color: #5aebad;
-  background-color: #707070; }
+  background-color: #060038; }
 
 a {
   outline: none;
