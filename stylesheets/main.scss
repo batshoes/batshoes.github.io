@@ -1,34 +1,47 @@
 @import "bourbon/bourbon";  
 @import 'defaults';
+@import 'grid';
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 body {
   font-family: $font;
+  color: $green;
+  background-color: $grey
+}
+a {
+  outline: none;
+  color: $green;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: #528cb3;
 }
 
 #outer {
-  width: 100vw;
+  width: 100%;
 }
 
 .header {
   text-align: center;
   font-size: 20px;
   margin-top: 20px;
+  margin-left: 10px;
 }
 
 .main-nav {
   width: 200px;
-  height: 100vh;
+  height: 100%;
   float: left;
   display: inline;
-  border-right: thin solid black;
+  border-right: thin solid $green;
 
   ul {
       list-style: none;
     }
 
   .fill {
-    height: 60vh;
+    height: 80vh;
   }
 
   img {
@@ -43,13 +56,3 @@ body {
   text-align: right;
 }
 }
-.projects {
-    display: block;
-      img {
-        height: 250px;
-        width: 500px;
-        margin: 3px;
-        float: left;
-        display: inline;
-      }
-  }
