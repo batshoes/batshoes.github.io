@@ -11,11 +11,15 @@ nav {
 }
 li, a {
   display: inline;
-  text-decoration: none;
   list-style: none;
-  margin-right: 15px; 
   color: salmon;
   background-color: white;
+}
+a {
+  text-decoration: none;
+}
+li {
+  margin-right: 15px;
 }
 .content {
   width: 70%;
