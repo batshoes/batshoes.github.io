@@ -26,3 +26,8 @@ li {
   margin: 0 auto;
   padding-top: 8%
 } 
+img {
+  height: 55px;
+  width: 55px;
+  margin-left: 20%;
+}
