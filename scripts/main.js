@@ -2,6 +2,8 @@ $('document').ready( function() {
 
   subjectLine();
 
+  titles();
+
 });
 
 function subjectLine() {
@@ -12,4 +14,10 @@ function subjectLine() {
 
   $('a[href="mailto:middlemissj.usa@gmail.com"]').attr("href", "mailto:middlemissj.usa@gmail.com?subject=" + emailsubjects[pickemailsubject]);
 
+}
+
+function titles() {
+  var titlelines = ["antiques", "lumberjacks", "pokemons", "perpendicular"];
+  var picktitle = Math.floor(Math.random()*titlelines.length);
+  $(document).attr('title',titlelines[picktitle]);
 }
