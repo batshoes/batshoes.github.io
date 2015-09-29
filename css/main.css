@@ -12,10 +12,10 @@ nav {
 li, a {
   display: inline;
   list-style: none;
-  color: salmon;
   background-color: white;
 }
 a {
+  color: salmon;
   text-decoration: none;
 }
 li {
