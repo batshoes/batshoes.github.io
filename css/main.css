@@ -31,3 +31,9 @@ img {
   width: 55px;
   margin-left: 20%;
 }
+.portfolio {
+  height: 250px;
+  width: 40%;
+  min-width: 450px;
+  margin: 0px;
+}
