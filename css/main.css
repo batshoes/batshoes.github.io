@@ -24,30 +24,49 @@ li {
 .outer {
   padding-top: 100px;
   margin-left: 15%;
+  width: 70%; 
+  margin: 0 auto;
+}
+.resume {
+  float: right;
+  margin-right: 15px;
+  clear: both;
 }
 .content {
-  margin-right: 15%;
+  width: 100%;
 }
-.content-left {
-  width: 35%;
-  display: inline-block;
-  float:left;
-} 
-.content-right {
-  width: 35%;
-  display: inline-block;
-} 
+.project {
+  display: block;
+  min-width: 800px;
+  margin-bottom: 50px;
+}
 .contact-image {
   height: 55px;
   width: 55px;
-  margin-left: 20%;
+  margin-left: 33%;
+}
+.contact-div {
+  width: 30%;
+  max-width: 800px;
+  display: inline-block;
 }
 .portfolio {
+  float: left;
+  max-width: 400px;
+}
+.portfolio, .text-portfolio {
   height: 250px;
-  width: 30%;
-  min-width: 400px;
-  margin-bottom: 30px;
+  width: 44%;
+  margin-bottom: 50px;
+}
+.text-portfolio {
+  line-height: 25px;
+  overflow: scroll;
+  float:right;
+  margin-left: 8%;
+
 }
 img.portfolio {
-  border: ;: thin solid black;
+  border: thin solid black;
+  min-width: 400px;
 }
