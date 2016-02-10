@@ -21,12 +21,23 @@ a {
 li {
   margin-right: 15px;
 }
+.outer {
+  padding-top: 100px;
+  margin-left: 15%;
+}
 .content {
-  width: 70%;
-  margin: 0 auto;
-  padding-top: 8%
+  margin-right: 15%;
+}
+.content-left {
+  width: 35%;
+  display: inline-block;
+  float:left;
 } 
-img {
+.content-right {
+  width: 35%;
+  display: inline-block;
+} 
+.contact-image {
   height: 55px;
   width: 55px;
   margin-left: 20%;
@@ -34,7 +45,9 @@ img {
 .portfolio {
   height: 250px;
   width: 30%;
-  min-width: 450px;
-  margin: 0px;
-  display: inline-block;
+  min-width: 400px;
+  margin-bottom: 30px;
+}
+img.portfolio {
+  border: ;: thin solid black;
 }
