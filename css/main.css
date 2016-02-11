@@ -32,41 +32,43 @@ li {
   margin-right: 15px;
   clear: both;
 }
-.content {
-  width: 100%;
-}
-.project {
-  display: block;
-  min-width: 800px;
-  margin-bottom: 50px;
-}
 .contact-image {
   height: 55px;
   width: 55px;
-  margin-left: 33%;
 }
 .contact-div {
   width: 30%;
-  max-width: 800px;
   display: inline-block;
-}
-.portfolio {
-  float: left;
-  max-width: 400px;
-}
-.portfolio, .text-portfolio {
-  height: 250px;
-  width: 44%;
-  margin-bottom: 50px;
-}
-.text-portfolio {
-  line-height: 25px;
-  overflow: scroll;
-  float:right;
-  margin-left: 8%;
-
 }
 img.portfolio {
   border: thin solid black;
-  min-width: 400px;
+  width: 400px;
+  height: 250px;
 }
+
+
+.image-portfolio {
+  display: inline-block;
+}  
+.text-portfolio {
+    line-height: 25px;
+    width:80%;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+
+
+@media screen and (max-width: 1000px;) {
+  .text-portfolio {
+    line-height: 25px;
+    overflow: scroll;
+    width: 60%;
+    margin-bottom: 20px;
+  }
+
+  .image-portfolio{}
+
+}
+
+
