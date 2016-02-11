@@ -57,7 +57,13 @@ img.portfolio {
     display: inline-block;
 }
 
-
+.footer {
+  width: 110%;
+  background-color: lightgrey;
+  height: 40px;
+  clear: both;
+  position: relative;
+}
 
 @media screen and (max-width: 1000px;) {
   .text-portfolio {
@@ -67,8 +73,6 @@ img.portfolio {
     margin-bottom: 20px;
   }
 
-  .image-portfolio{}
 
-}
 
 
