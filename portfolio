@@ -11,8 +11,8 @@
   <nav>
     <ul>
       <li><a href="index.html">home</a></li>
-      <li><a href="portfolio.html">portfolio</a></li>
-      <li><a href="contact.html">contact me</a></li>
+      <li><a href="portfolio">portfolio</a></li>
+      <li><a href="contact">contact me</a></li>
     </ul>
   </nav>
 
@@ -24,7 +24,20 @@
 
     <div class="content">
       <div class="project">
+        <h2>How Long Till...</h2>
+        <div class="image-portfolio">
+          <a href="https://hlt.firebaseapp.com/">
+          <img class='portfolio' src="Images/HLT.png"></a>
+        </div>
+        <div class="text-portfolio">
+          <p>
+            Fun application that checks how long until a certain date in movie runtimes. <br>
+            FireBase application. AJAX - XML - JavaScript - Json for Tmdb API integration. 
+          </p>          
+        </div>
+      </div>
 
+      <div class="project">
         <h2>HopScotch</h2>
         <div class="image-portfolio">
           <a href="https://tranquil-temple-7492.herokuapp.com/">
@@ -33,7 +46,7 @@
         <div class="text-portfolio">
           <p>
             Need a place to store all your fun Drinking Games? HopScotch is the place for you! <br>
-            Group Rails project, Coffeescript, jQuery and Javascript for navigation, nested forms and transitions. Devise
+            Group Rails project, Coffeescript, jQuery and JavaScript for navigation, nested forms and transitions. Devise
             for secure login and Twitter/Facebook/LinkedIn Omniauth, Heroku Deployment.
           </p>          
         </div>
@@ -48,8 +61,8 @@
         </div>
         <div class="text-portfolio">
           <p>
-            Peaceful protest of corporate funding of politicians. <br>
-            Liquid Template editing with NationBuilder. 
+            Peaceful protest of corporate funding of politicians.<br>
+            Built with NationBuilder CMS as per client request. Liquid Ruby Templating language. 
           </p>  
         </div>
 
