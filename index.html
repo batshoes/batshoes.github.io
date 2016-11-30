@@ -2,36 +2,64 @@
 <html>
   <head>
     <title>James Middlemiss</title>
-
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js'></script>
+    <script type="text/javascript" src='scripts/jquery-scrollto.js'></script>
+    
     <script type="text/javascript" src='scripts/main.js'></script>
+
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="./css/main.css">
     </head>
   <body>
     <div class="top"></div>
-    <div class="header">
-      <h1>James Middlemiss</h1>
-    </div>
-    <div class="content">
-      <h3>It's simple really.</h3>
-      <p>I like to &lt;/code&gt;</p>
-    </div>
-    <div class="content-images">
+    <div class="main">
       
-      <a href="https://www.github.com/batshoes"><img class="contact-image" src="https://s3.amazonaws.com/batshoes/1477704441_github_social_media_logo.svg"></a>
-    
-    
-      <a href="https://www.linkedin.com/in/jamesomiddlemiss"><img class="contact-image" src="https://s3.amazonaws.com/batshoes/1477704436_linkedin_social_media_logo.svg"></a>
-    
-    
-      <a href="mailto:james.o.middlemiss@gmail.com"><img class="contact-image" src="https://s3.amazonaws.com/batshoes/1477705622_google_social_media_logo.svg"></a>
       
-      <a href="https://www.reddit.com/user/bonsaibatman/"><img class="contact-image" src="https://s3.amazonaws.com/batshoes/1477705627_reddit_social_media_logo.svg"></a>
+      <div class="header">
+        <h1>James Middlemiss</h1>
+      </div>
+      
+      <div class="content">
+        <p>It's simple really.</p>
+        <p>
+          I like to code in <span class="code">&lt;%= <span class="ruby">ruby</span> %&gt;</span> mostly.
+        </p>
+      </div>
+      
+      <div class="content-images">
+
+        <a href="https://www.github.com/batshoes"><img class="contact-image" src="https://s3.amazonaws.com/batshoes/1477704441_github_social_media_logo.svg"></a>
+      
+        <a href="https://www.linkedin.com/in/jamesomiddlemiss"><img class="contact-image" src="https://s3.amazonaws.com/batshoes/1477704436_linkedin_social_media_logo.svg"></a>
+            
+        <a href="https://www.reddit.com/user/bonsaibatman/"><img class="contact-image" src="https://s3.amazonaws.com/batshoes/1477705627_reddit_social_media_logo.svg"></a>
+
+        <img class="gmail contact-image" src="https://s3.amazonaws.com/batshoes/1477705622_google_social_media_logo.svg">
+      </div>
+
+      <div id="contact-form">
+        <form method="POST" action="http://formspree.io/james.o.middlemiss@gmail.com">
+          <label>Return Email</label>
+          <input class="email" type="email" name="_replyto" placeholder="Your email" required>
+          <label>Subject</label>
+          <input class="subject" type="text" name="_subject" placeholder="" required>
+          <label>Message</label>
+          <textarea class="message" name="message" placeholder="Your message" required></textarea >
+          <button type="submit">Send</button>
+        </form>
+      </div>
+
+      <div class="warrior"></div>
+
+      
+      
+
+  
     </div>
-    
-    <div class="footer"> James Middlemiss 2016</div>
-  </body>
+    <div class="footer"> 
+      <p>James Middlemiss 2016</p>     
+    </div>
+  </body>  
 </html>
  
 
