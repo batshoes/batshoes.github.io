@@ -1,5 +1,5 @@
 $('document').ready( function() {
-
+  // headerImage();
 
   titles();
   $(document).on('click', '.gmail', openContact);
@@ -21,6 +21,15 @@ function autoFill() {
   $('textarea.message').attr('placeholder', message[pickedMessage]) 
 
 }
+
+// function headerImage(){
+//   var images = ["https://s3.amazonaws.com/batshoes/maps.jpeg"]
+//       pickedImage = getRandom(images)
+
+//       url = "url('" + images[pickedImage] + "') center no-repeat;"
+//       debugger
+//   $('.top').css('background-image', url)
+// }
 
 function openContact() {
 	// $('#contact-form').scrollTo(3000)
