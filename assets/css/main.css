@@ -1,0 +1,73 @@
+html {
+  font-family: 'Roboto Mono', monospace;
+}
+
+body {
+  display: grid;
+  margin: 0px;
+  grid-template-columns: 25% 6.25% 6.25% 12.5% 12.5% 6.25% 6.25% 25%;
+  grid-template-rows: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+  height: 100vh;
+}
+
+.content {
+  grid-column-start: 2;
+  grid-column-end: 8;
+  grid-row-start:2;
+  grid-row-end: 8;
+  border: thick solid black;
+  background-color: white;
+  text-align: center;
+}
+
+.content-text {
+  grid-column-start: 3;
+  grid-column-end: 7;
+  grid-row-start:3;
+  grid-row-end: 5;
+  text-align: center;
+}
+
+.skill-attribute {
+  font-weight: bold;
+}
+
+.github-block {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start:6;
+  grid-row-end: 7;
+}
+
+.contact-block {
+  grid-column-start: 5;
+  grid-column-end: 7;
+  grid-row-start:6;
+  grid-row-end: 7;
+}
+
+.github-block, .contact-block {
+  text-decoration: none;
+  color: black;
+}
+p, a {
+  display: inline-block;
+}
+
+.contact {
+  text-align: right;
+}
+.github-png, .contact-png {
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+}
+
+.footer {
+  grid-column-start: 1;
+  grid-column-end: 12;
+  grid-row-start:6;
+  grid-row-end: 9;
+  background-color: #7a77cb;
+  z-index: -1;
+}
