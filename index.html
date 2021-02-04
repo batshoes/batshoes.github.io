@@ -1,179 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Minimal Resume Template</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Batshoes Home</title>
+        <meta charset="utf-8">
+        <!-- include the termynal stylesheet -->
+        <link rel="stylesheet" href="termynal.css">
+        <!-- some custom styles for the page -->
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu'>
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono'>
+        <style>
+            body {
+                padding: 0; margin: 0;
+                background: linear-gradient(45deg, #5874DC 0%,#E06C78 100%);
+                font-family: Ubuntu;
+                overflow-y: scroll;
+                width: 100%;
+                min-height: 100vh;
+                display: -webkit-box; display: -ms-flexbox; display: flex;
+                -webkit-box-align: center; -ms-flex-align: center; align-items: center;
+                -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center;
+                -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- the termynal container -->
+        <div id="termynal" data-termynal data-ty-startDelay="2000" data-ty-delay="140">
+            <!-- <span data-ty="input" data-ty-prompt="~/code">git clone <a href="https://github.com/batshoes.git">https://github.com/batshoes.git</a></span>
+            <span data-ty>Are you sure you want to clone 'batshoes' here?</span>
+            <span data-ty="input" data-ty-prompt="(y/n)" data-ty-typeDelay="1200">y</span>
+            <span data-ty data-ty-delay="1300">Cloning into 'batshoes'...</span>
+            <span data-ty="progress" data-ty-progressChar="·"></span>
+            <span data-ty>remote: Enumerating objects: 515, done.</span>
+            <span data-ty>remote: Counting objects: 100% (515/515), done.</span>
+            <span data-ty>remote: Compressing objects: 100% (18/18), done.</span>
+            <span data-ty>remote: Total 41530 (delta 501), reused 498 (delta 497), pack-reused 41015</span>
+            <span data-ty>Receiving objects: 100% (41530/41530), 27.16 MiB | 4.50 MiB/s, done.</span>
+            <span data-ty>Resolving deltas: 100% (24577/24577), done.</span>
+            </span>
+            <span data-ty="input" data-ty-prompt="~/code">cd batshoes/</span>
+            <span data-ty="input" data-ty-prompt="~/code/batshoes" data-ty-delay="100">ls</span> -->
+            <span data-ty data-ty-prompt="~/code/batshoes">
+                <span data-link class="about">About</span>
+                <span data-link class="career">Career</span>
+                <span data-link class="contact">Contact</span>
+                <span data-link class="projects">Projects</span>
+            </span>
+        </div>
 
-	<div class="container">
-		<div class="hero">
-			<h1 class="name"><strong>James</strong> Middlemiss</h1>
-			<span class="job-title">Senior Backend Developer</span>
-			<span class="email">james.o.middlemiss@gmail.com</span>
+        <div id="secondTermynal">
 
-			<h2 class="lead">Backend Development, API Integration and Creation.</h2>
-		</div>
-	</div>
+        </div>
 
-<!-- Skills and intrest section -->
-	<div class="container">
-
-		<div class="sections">
-			<h2 class="section-title">Skills</h2>
-
-			<div class="list-card">
-				<span class="exp">+ 5 years</span>
-				<div>
-					<h3>Object Oriented programming & frameworks</h3>
-					<span>Ruby, Rails, Javascript, Git</span>
-				</div>
-			</div>
-					
-			<div class="list-card">
-				<span class="exp">+ 5 Years</span>
-				<div>
-					<h3>Dev Ops</h3>
-					<span>Heroku, Cloudflare, AWS</span>
-				</div>
-			</div>
-
-			<div class="list-card">
-				<span class="exp">< 1 Year</span>
-				<div>
-					<h3>Front End</h3>
-					<span>Vue.js</span>
-				</div>
-			</div>
-
-
-		</div>
-		<div class="sections">
-				<h2 class="section-title">Interests</h2>
-				
-				<div class="list-card">
-					<div>
-						<h3>Scripting languages</h3>
-						<span>Bash, Ruby</span>
-					</div>
-				</div>	
-
-				<div class="list-card">
-					<div>
-						<h3>Hobbies</h3>
-						<span>Cooking, Photography, Kid rearing</span>
-					</div>
-				</div>		
-		</div>
-	</div>
-
-	<!-- Achievements -->
-
-	<div class="container cards">
-		
-		<div class="card">
-			<div class="skill-level">
-				<span>+</span>
-				<h2>60</h2>
-			</div>
-
-			<div class="skill-meta">
-				<h3>Projects</h3>
-				<span>Adapting and creating solutions for customer's needs</span>
-			</div>
-		</div>
-
-			
-		<div class="card">
-			<div class="skill-level">
-				<h2>50</h2>
-				<span>%</span>
-			</div>
-
-			<div class="skill-meta">
-				<h3>Web</h3>
-				<span>Applications development integrating third-party services and mobile client(s)</span>
-			</div>
-		</div>
-
-			
-		<div class="card">
-			<div class="skill-level">
-				<h2>30</h2>
-				<span>%</span>
-			</div>
-
-			<div class="skill-meta">
-				<h3>Technical solutions</h3>
-				<span>Such as web services, scripts, configurations</span>
-			</div>
-		</div>
-
-
-		<div class="card">
-			<div class="skill-level">
-				<h2>20</h2>
-				<span>%</span>
-			</div>
-
-			<div class="skill-meta">
-				<h3>Leading</h3>
-				<span>Web projects and ensure the quality of delivery</span>
-			</div>
-		</div>
-
-	</div>
-
-	<!-- Timeeline -->
-
-	<div class="container">
-		<ol class="timeline">
-		  <li>
-		    <p class="line">Experiences</p>
-		    <span class="point"></span>
-		    <p class="description">
-		      Snr Backend Developer @ Valiant Finance
-		    </p>
-		    <span class="date">Today - January 2019</span>
-		  </li>
-
-		  <li>
-		    <span class="point"></span>
-		    <p class="description">
-		      Lead Developer @ Course Report
-		    </p>
-		    <span class="date">May 2016 - Jan 2018</span>
-			</li>
-			
-			<li>
-				<span class="point"></span>
-				<p class="description">
-					Jnr Developer @ Sale Move -> Glia
-				</p>
-				<span class="date">Jan 2016 - May 2016</span>
-			</li>
-
-			<li>
-		    <p class="line">Education</p>
-		    <span class="point"></span>
-		    <p class="description">
-		      Web Development Intensive @ New York Code + Design Academy
-		    </p>
-		    <span class="date">2015</span>
-		  </li>
-		</ol>
-
-	</div>
-
-
-	<br><br>
-
-
-	<footer class="container">
-		<span style="font-size: 16px; margin-top: ">Coded by <a href="https://newtodesign.com/">New to design </a> Designed by <a href="https://dribbble.com/shots/4342703-Minimal-resume-freebie-for-junior-self-taught-people">Nicolas Meuzard</a></span>
-	</footer>
-
-
-</body>
+        <!-- include and initialise termynal.js -->
+        <script src="termynal.js" data-termynal-container="#termynal"></script>
+    </body>
 </html>
