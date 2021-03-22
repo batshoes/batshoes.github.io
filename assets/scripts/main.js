@@ -2,8 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
     konamify("arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightbaenter");
-
     copyEmail();
+
+    tippy('.job-description', {
+        content: 'Hello - Light',
+        theme: 'light',
+        arrow: true,
+        arrowType: 'round', // or 'sharp' (default)
+        animation: 'fade',
+    })
 });
 
 function copyEmail() {
