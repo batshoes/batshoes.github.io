@@ -2,10 +2,13 @@
 
 * {
   font-family: 'Ubuntu';
-  background-color:rgb(39, 41, 43);
-  color: white;
   font-size: 1.02em;
   font-weight: bolder;
+}
+
+body {
+  background-color:rgb(39, 41, 43);
+  color: white;
 }
 
 a {
