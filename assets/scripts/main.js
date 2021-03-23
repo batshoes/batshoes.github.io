@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     tippy('.interest-writing', {
-        content: 'Peg Leg Meg is my daughters plushy puppy with a toilet roll peg leg. She has adventures in shopping trolley ships, cast away islands on the rug in our living room, or stranded at sea when we left her in the car overnight.',
+        content: 'Peg Leg Meg is my daughters plushy puppy with a toilet roll peg leg. She has adventures in shopping trolley pirate ships, cast away islands on the rug in our living room, or stranded at sea when we left her in the car overnight.',
         theme: 'light-border',
         arrow: true,
         arrowType: 'round', // or 'sharp' (default)
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     tippy('.contact-highscore', {
-        content: 'There was a time I could run the Luigi Raceway in Mario Kart 64 Blindfolded in under 2.5 minutes',
+        content: 'There was a time I could run the Luigi Raceway in Mario Kart 64 blindfolded in under 2.5 minutes',
         theme: 'light-border',
         arrow: true,
         arrowType: 'round', // or 'sharp' (default)
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     tippy('.contact-story', {
-        content: 'Does your child also like to bring their favourite stuffed animal to spaghetti dinners? I have a cautionary tale that will keep even the most beloved fluffy animal at arms length from the saucy noodle monsters of Ta-Bel.',
+        content: 'Does your child also like to bring their favourite stuffed animal to spaghetti dinners? I have a cautionary tale that will keep even the most beloved fluffy animal at arms length from the saucy noodle monsters of Tah-Bel.',
         theme: 'light-border',
         arrow: true,
         arrowType: 'round', // or 'sharp' (default)
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     tippy('.contact-recommendations', {
-        content: '<a href = "https://www.bistecca.com.au/" class="highlight" > Bistecca</a>',
+        content: '<a href = "https://www.bistecca.com.au/" class="highlight" >Bistecca</a>',
         theme: 'light-border',
         arrow: true,
         arrowType: 'round', // or 'sharp' (default)
