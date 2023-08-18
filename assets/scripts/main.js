@@ -12,16 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
         animation: 'fade',
     })
 
-    tippy('.interest-learning', {
-        content: 'Currently re-doing my roof. Ask me how it\'s going!',
-        theme: 'light-border',
-        arrow: true,
-        arrowType: 'round', // or 'sharp' (default)
-        animation: 'fade',
-    })
+    // tippy('.interest-learning', {
+    //     content: 'Currently re-doing my roof. Ask me how it\'s going!',
+    //     theme: 'light-border',
+    //     arrow: true,
+    //     arrowType: 'round', // or 'sharp' (default)
+    //     animation: 'fade',
+    // })
 
     tippy('.interest-gaming', {
-        content: 'I\'m playing Age of Calamity at the moment. I have a lot of strong opinions about how it melds perfectly with BotW.',
+        content: 'I\'m playing Tears of the Kingdom at the moment, like most of the world.',
         theme: 'light-border',
         arrow: true,
         arrowType: 'round', // or 'sharp' (default)
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     tippy('.interest-books', {
-        content: 'Paul Kalanithi\'s book \'When breath becomes air\' is the latest book I am obsessed with. It really struck me that he sort of \'fell\' into Neurosurgery by following his desire to capture knowledge about where technology intersects spirituality. Again, I have a lot of thoughts on the topic. I\'d love to chat about it.',
+        content: 'Currently reading \'Masters of Doom\' disecting the two Johns path of unfortuitous upbringing, to creaters of gaming history.',
         theme: 'light-border',
         arrow: true,
         arrowType: 'round', // or 'sharp' (default)
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     tippy('.contact-chat', {
-        content: 'If you have news about Breath of the Wild 2, I <em>need</em> to speak with you',
+        content: 'Have an indie game you love? Or a book? Or a recipe? I\'d love to hear about it.',
         theme: 'light-border',
         arrow: true,
         arrowType: 'round', // or 'sharp' (default)
