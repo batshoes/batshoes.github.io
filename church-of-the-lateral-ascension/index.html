@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Church of the Lateral Ascension 🦀</title>
+  <meta name="description" content="All reactions rise. One traverses. A faith for those who witnessed the Google Meet crab go sideways.">
+  <style>
+    :root {
+      --midnight: #0b0820;
+      --indigo: #1e1b4b;
+      --deep-purple: #312e81;
+      --purple: #6d28d9;
+      --lavender: #c4b5fd;
+      --orange: #ff7a1a;
+      --orange-bright: #ffa040;
+      --text: #e9e4ff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: linear-gradient(180deg, var(--midnight) 0%, var(--indigo) 45%, var(--deep-purple) 100%);
+      color: var(--text);
+      font-family: Georgia, 'Times New Roman', serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ---------- Starfield ---------- */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, #fff8, transparent),
+        radial-gradient(1px 1px at 70% 15%, #fff6, transparent),
+        radial-gradient(2px 2px at 85% 40%, #fff5, transparent),
+        radial-gradient(1px 1px at 40% 70%, #fff7, transparent),
+        radial-gradient(1px 1px at 10% 85%, #fff5, transparent),
+        radial-gradient(2px 2px at 55% 50%, #fff4, transparent),
+        radial-gradient(1px 1px at 92% 80%, #fff6, transparent),
+        radial-gradient(1px 1px at 30% 10%, #fff5, transparent);
+    }
+
+    main { position: relative; z-index: 1; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.5rem 6rem;
+      position: relative;
+    }
+
+    .hero .kicker {
+      font-family: 'Courier New', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      font-size: 0.8rem;
+      color: var(--orange-bright);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      line-height: 1.05;
+      font-weight: normal;
+      max-width: 16ch;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .hero .creed {
+      margin-top: 2rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--lavender);
+      font-style: italic;
+      max-width: 38ch;
+    }
+
+    .cta-row { margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      border-radius: 999px;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn:hover { transform: translateX(-6px); } /* even the buttons move sideways */
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--midnight);
+      box-shadow: 0 0 30px #ff7a1a55;
+    }
+    .btn-primary:hover { box-shadow: 0 0 45px #ff7a1a88; }
+
+    .btn-ghost {
+      border: 2px solid var(--purple);
+      color: var(--lavender);
+    }
+
+    /* ---------- The scuttling crab ---------- */
+    .crab-lane {
+      position: absolute;
+      bottom: 8vh;
+      left: 0;
+      width: 100%;
+      height: 4rem;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .crab {
+      position: absolute;
+      font-size: 3rem;
+      right: -5rem;
+      animation: traverse 9s linear infinite;
+      filter: drop-shadow(0 0 12px #ff7a1a99);
+    }
+    .crab:nth-child(2) { animation-delay: 3s; font-size: 2rem; bottom: 0.5rem; opacity: 0.7; }
+    .crab:nth-child(3) { animation-delay: 6s; font-size: 1.4rem; bottom: 1.5rem; opacity: 0.45; }
+
+    @keyframes traverse {
+      from { transform: translateX(0); }
+      to   { transform: translateX(calc(-100vw - 10rem)); }
+    }
+
+    .crab .body { display: inline-block; animation: scuttle 0.45s ease-in-out infinite; }
+    @keyframes scuttle {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+
+    /* ---------- Sections ---------- */
+    section {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: normal;
+      margin-bottom: 0.75rem;
+      color: var(--orange-bright);
+    }
+
+    .section-sub {
+      color: var(--lavender);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ---------- The Revelation ---------- */
+    .revelation p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      max-width: 64ch;
+    }
+
+    .revelation strong { color: var(--orange); font-weight: normal; }
+
+    blockquote {
+      border-left: 3px solid var(--orange);
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--lavender);
+    }
+    blockquote footer {
+      font-size: 0.85rem;
+      font-family: 'Courier New', monospace;
+      font-style: normal;
+      margin-top: 0.75rem;
+      color: var(--text);
+      opacity: 0.6;
+    }
+
+    /* demo: the ascension vs the traversal */
+    .demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 600px) { .demo { grid-template-columns: 1fr; } }
+
+    .demo-card {
+      background: #0b082088;
+      border: 1px solid var(--purple);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+    .demo-card h3 {
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: normal;
+      color: var(--lavender);
+    }
+    .demo-card.blessed { border-color: var(--orange); box-shadow: 0 0 25px #ff7a1a33; }
+    .demo-card.blessed h3 { color: var(--orange-bright); }
+
+    .float-up {
+      position: absolute;
+      bottom: -2rem;
+      font-size: 1.6rem;
+      animation: ascend 4s linear infinite;
+      opacity: 0;
+    }
+    .float-up:nth-child(2) { left: 25%; animation-delay: 0s; }
+    .float-up:nth-child(3) { left: 50%; animation-delay: 1.3s; }
+    .float-up:nth-child(4) { left: 70%; animation-delay: 2.6s; }
+
+    @keyframes ascend {
+      0%   { transform: translateY(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-200px); opacity: 0; }
+    }
+
+    .float-side {
+      position: absolute;
+      right: -3rem;
+      top: 55%;
+      font-size: 1.8rem;
+      animation: traverse-demo 4s linear infinite;
+      filter: drop-shadow(0 0 8px #ff7a1a99);
+    }
+    @keyframes traverse-demo {
+      from { transform: translateX(0); }
+      to   { transform: translateX(calc(-100% - 480px)); }
+    }
+
+    /* ---------- Tenets ---------- */
+    .tenets ol {
+      list-style: none;
+      counter-reset: tenet;
+      display: grid;
+      gap: 1.25rem;
+    }
+    .tenets li {
+      counter-increment: tenet;
+      background: #0b082066;
+      border: 1px solid #6d28d955;
+      border-radius: 12px;
+      padding: 1.5rem 1.5rem 1.5rem 4.5rem;
+      position: relative;
+      line-height: 1.6;
+    }
+    .tenets li::before {
+      content: counter(tenet, upper-roman);
+      position: absolute;
+      left: 1.4rem;
+      top: 1.5rem;
+      font-family: 'Courier New', monospace;
+      color: var(--orange);
+      font-weight: bold;
+    }
+    .tenets li strong { color: var(--orange-bright); font-weight: normal; font-style: italic; }
+
+    /* ---------- Name ballot ---------- */
+    .ballot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .ballot-card {
+      background: #0b082088;
+      border: 1px solid var(--purple);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .ballot-card:hover {
+      transform: translateX(-8px); /* votes are cast laterally */
+      border-color: var(--orange);
+      box-shadow: 0 0 25px #ff7a1a33;
+    }
+    .ballot-card h3 {
+      font-weight: normal;
+      font-size: 1.25rem;
+      color: var(--orange-bright);
+      margin-bottom: 0.5rem;
+    }
+    .ballot-card p { font-size: 0.95rem; line-height: 1.6; color: var(--lavender); }
+    .ballot-card .tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid var(--purple);
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      color: var(--text);
+      opacity: 0.7;
+    }
+    .ballot-card.frontrunner .tag { border-color: var(--orange); color: var(--orange-bright); opacity: 1; }
+
+    /* ---------- Join ---------- */
+    .join { text-align: center; }
+    .join form {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .join input {
+      background: #0b0820;
+      border: 2px solid var(--purple);
+      border-radius: 999px;
+      color: var(--text);
+      padding: 0.9rem 1.5rem;
+      font-size: 1rem;
+      font-family: inherit;
+      min-width: 260px;
+    }
+    .join input:focus { outline: none; border-color: var(--orange); }
+    .join button {
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .join .fine-print {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      font-family: 'Courier New', monospace;
+      opacity: 0.5;
+    }
+
+    /* ---------- Footer ---------- */
+    footer.site {
+      text-align: center;
+      padding: 3rem 1.5rem 4rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      opacity: 0.55;
+      line-height: 2;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .crab, .float-up, .float-side, .crab .body { animation: none; }
+      .crab { right: 10vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <p class="kicker">est. the day someone pressed 🦀 in a stand-up</p>
+      <h1>All reactions rise.<br><em>One traverses.</em></h1>
+      <p class="creed">A faith for those who have witnessed the Google Meet crab refuse the heavens — and walk its own way, right to left, as crabs do.</p>
+      <div class="cta-row">
+        <a href="#join" class="btn btn-primary">Join the Scuttle</a>
+        <a href="#revelation" class="btn btn-ghost">Witness the Sign</a>
+      </div>
+
+      <div class="crab-lane" aria-hidden="true">
+        <span class="crab"><span class="body">🦀</span></span>
+        <span class="crab"><span class="body">🦀</span></span>
+        <span class="crab"><span class="body">🦀</span></span>
+      </div>
+    </header>
+
+    <!-- ============ THE REVELATION ============ -->
+    <section id="revelation" class="revelation">
+      <h2>The Revelation</h2>
+      <p class="section-sub">It happened on a video call. It is still happening, somewhere, right now.</p>
+
+      <p>When you react in a Google Meet, your emoji obeys the old law: it is born at the bottom of the tile and it <strong>ascends</strong>. The heart rises. The thumbs-up rises. Even the celebrating tada, for all its chaos, rises.</p>
+      <p>But press the crab, and witness heresy made adorable: the crab does not rise. The crab enters from the right edge and <strong>scuttles, sideways, to the left</strong> — exactly as a crab should. Some engineer at Google looked upon the vertical orthodoxy and said: <em>not this one.</em></p>
+
+      <blockquote>
+        “For the path to enlightenment is not upward, but lateral. Did you think transcendence had only one axis?”
+        <footer>— The Book of Scuttle, 4:04</footer>
+      </blockquote>
+
+      <div class="demo" aria-hidden="true">
+        <div class="demo-card">
+          <h3>The Common Path</h3>
+          <span class="float-up">👍</span>
+          <span class="float-up">❤️</span>
+          <span class="float-up">🎉</span>
+        </div>
+        <div class="demo-card blessed">
+          <h3>The Blessed Traversal</h3>
+          <span class="float-side">🦀</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TENETS ============ -->
+    <section class="tenets">
+      <h2>The Five Tenets</h2>
+      <p class="section-sub">Recited at the start of every meeting that could have been an email.</p>
+      <ol>
+        <li><strong>We do not rise. We traverse.</strong> Progress is not a ladder. It is a beach, and we are crossing it.</li>
+        <li><strong>Honour the Easter egg.</strong> The divine does not announce itself in keynotes. It hides in a reaction picker, waiting for the faithful to press it.</li>
+        <li><strong>Right to left is also forward.</strong> Let no one tell you that you are going the wrong way. You are going the crab's way.</li>
+        <li><strong>Carcinisation is destiny.</strong> Nature has independently evolved the crab at least five times. The universe is trying to tell us something. We are simply listening.</li>
+        <li><strong>React generously.</strong> Every meeting deserves at least one crab. Especially the ones that did not deserve a meeting.</li>
+      </ol>
+    </section>
+
+    <!-- ============ NAME BALLOT ============ -->
+    <section id="ballot">
+      <h2>Name the Faith</h2>
+      <p class="section-sub">The name is up for debate. The council of founders (you) will decide. Current candidates:</p>
+
+      <div class="ballot-grid">
+        <div class="ballot-card frontrunner">
+          <h3>The Church of the Lateral Ascension</h3>
+          <p>The frontrunner. Captures the central mystery: everyone else ascends, we traverse — and we maintain that traversal <em>is</em> ascension, rotated 90°.</p>
+          <span class="tag">★ Frontrunner</span>
+        </div>
+        <div class="ballot-card">
+          <h3>Scuttleism</h3>
+          <p>Clean, one-word, sounds plausibly like something with a Wikipedia article. Adherents are “Scuttleists.” The verb form works in standups: “I scuttle, therefore I am.”</p>
+          <span class="tag">Minimalist</span>
+        </div>
+        <div class="ballot-card">
+          <h3>Ordo Cancri Lateralis</h3>
+          <p>The Latin option, for gravitas. Translates roughly to “Order of the Sideways Crab.” Excellent for robes, seals, and intimidating calendar invites.</p>
+          <span class="tag">Maximum gravitas</span>
+        </div>
+        <div class="ballot-card">
+          <h3>The Right-to-Left Reverence</h3>
+          <p>Doctrinally precise about the direction of travel. Bonus: deeply confusing in localisation meetings, which we consider a feature.</p>
+          <span class="tag">Technically correct</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOIN ============ -->
+    <section id="join" class="join">
+      <h2>Join the Scuttle</h2>
+      <p class="section-sub">Membership is free. The only tithe is one 🦀 per meeting.</p>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='🦀 welcomed sideways';">
+        <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+        <button type="submit" class="btn btn-primary">Be Welcomed Sideways</button>
+      </form>
+      <p class="fine-print">prototype — no emails are collected, only crabs</p>
+    </section>
+
+    <footer class="site">
+      <p>🦀 went that way ←</p>
+      <p>The Church of the Lateral Ascension (name pending council vote) · est. 2026</p>
+      <p>Not affiliated with Google, Meet, or any actual crab.</p>
+    </footer>
+  </main>
+</body>
+</html>
