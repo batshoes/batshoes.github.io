@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>James Middlemiss — Sideways</title>
+  <meta name="description" content="James Middlemiss. Software engineer. All careers rise; one traverses.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffd93b;
+      --ink: #111111;
+      --card: #fffdf5;
+      --pink: #ff5d8f;
+      --blue: #3d8bff;
+      --green: #2fd573;
+      --orange: #ff7a1a;
+      --shadow: 6px 6px 0 var(--ink);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    main {
+      max-width: 46rem;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 7rem;
+    }
+
+    .hello-badge {
+      display: inline-block;
+      background: var(--pink);
+      color: var(--card);
+      font-weight: 700;
+      padding: 0.35rem 1rem;
+      border: 3px solid var(--ink);
+      box-shadow: var(--shadow);
+      transform: rotate(-3deg);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+    }
+
+    h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2.6rem, 9vw, 5rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      text-shadow: 4px 4px 0 var(--card);
+    }
+
+    .tagline {
+      font-weight: 500;
+      font-size: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 3px solid var(--ink);
+      box-shadow: var(--shadow);
+      padding: 1.75rem 2rem;
+      margin-bottom: 2rem;
+    }
+    .card:nth-of-type(even) { transform: rotate(0.6deg); }
+    .card:nth-of-type(odd) { transform: rotate(-0.6deg); }
+
+    h2 {
+      font-family: 'Archivo Black', sans-serif;
+      text-transform: uppercase;
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      background: var(--ink);
+      color: var(--bg);
+      padding: 0.2rem 0.7rem;
+      transform: rotate(-1deg);
+    }
+
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    .highlight {
+      font-weight: 700;
+      padding: 0 0.3rem;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      display: inline-block;
+      transform: rotate(-1deg);
+      background: var(--green);
+    }
+    .highlight.alt-1 { background: var(--pink); color: var(--card); }
+    .highlight.alt-2 { background: var(--blue); color: var(--card); }
+    .highlight.alt-3 { background: var(--orange); }
+
+    a { color: var(--ink); font-weight: 700; }
+
+    /* Tooltips */
+    [data-tip] { position: relative; cursor: help; }
+    [data-tip]::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) rotate(1deg) translateY(4px);
+      width: max-content;
+      max-width: min(22rem, 78vw);
+      background: var(--ink);
+      color: var(--card);
+      border: 3px solid var(--ink);
+      box-shadow: 4px 4px 0 rgba(17,17,17,0.35);
+      padding: 0.6rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      z-index: 20;
+      white-space: normal;
+    }
+    [data-tip]:hover::after, [data-tip]:focus::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) rotate(1deg) translateY(0);
+    }
+
+    ul.shouts { list-style: none; }
+    ul.shouts li {
+      padding-left: 2rem;
+      position: relative;
+      margin-bottom: 0.7rem;
+    }
+    ul.shouts li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    #copy {
+      cursor: copy;
+      font-weight: 700;
+      background: var(--bg);
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      padding: 0 0.4rem;
+      display: inline-block;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* Resident crab */
+    .crab {
+      position: fixed;
+      bottom: 0.75rem;
+      left: -4rem;
+      font-size: 2.2rem;
+      z-index: 30;
+      animation: scuttle 28s linear infinite;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    @keyframes scuttle {
+      0%   { left: -4rem; transform: scaleX(1); }
+      48%  { left: calc(100% + 2rem); transform: scaleX(1); }
+      50%  { left: calc(100% + 2rem); transform: scaleX(-1); }
+      98%  { left: -4rem; transform: scaleX(-1); }
+      100% { left: -4rem; transform: scaleX(1); }
+    }
+    body.konamified .crab { animation-duration: 5s; }
+
+    .konami-banner {
+      display: none;
+      background: var(--ink);
+      color: var(--green);
+      border: 3px solid var(--ink);
+      box-shadow: var(--shadow);
+      font-family: 'Archivo Black', sans-serif;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      transform: rotate(-1.5deg);
+    }
+    body.konamified .konami-banner { display: block; }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="hello-badge">G'day!</span>
+    <h1>James<br>Middlemiss</h1>
+    <p class="tagline">Software engineer. Professional button-presser. Amateur crab enthusiast.</p>
+
+    <div class="card">
+      <h2>Day Job</h2>
+      <p>
+        I'm a software engineer with a primary focus on <span class="highlight">Ruby on Rails</span>.
+        I spend my weekdays as a <span class="highlight alt-2" data-tip="While Ruby on Rails and Vue.js are my fav's, I'm always into learning more." tabindex="0">Senior Backend Engineer</span>,
+        building new features with a strong TDD protocol and integrating third-party APIs with some of Australia's largest brands.
+        Over a decade in, still loving every minute.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Everything Else</h2>
+      <p>
+        I like seeing how things work — different programming solutions to varied problems, and gadgets I can take apart.
+        Deconstructing and rebuilding things, digitally or physically, is super gratifying and drives me to do my job better.
+      </p>
+      <p>
+        <span class="highlight alt-3" data-tip="Masters of Doom is a favourite — the two Johns' path from unfortuitous upbringings to creators of gaming history." tabindex="0">Reading</span>
+        expands the world when travel is impermissible.
+        When I have the time, I really enjoy <span class="highlight alt-1" data-tip="Ask me what's on top of the backlog at the moment. There was a time I could run Luigi Raceway in Mario Kart 64 blindfolded in under 2.5 minutes." tabindex="0">video games</span> —
+        the best ones are as immersive and vivid as the best books or films.
+      </p>
+      <p>
+        I sometimes <span class="highlight alt-2" data-tip="Peg Leg Meg is my daughters' plushy puppy with a toilet-roll peg leg. She has adventures in shopping-trolley pirate ships, on castaway islands on the living-room rug, or stranded at sea when we left her in the car overnight." tabindex="0">write silly stories and songs</span>
+        for my daughters, Georgia and Sophie. Best kids I've met. Totally unbiased. Straight facts.
+      </p>
+      <p>
+        I love <span class="highlight" data-tip="Forever hunting the next tasty morsel. Ask me for my 'best of' lists — NYC is done, Sydney is a work in progress." tabindex="0">all things food</span>
+        and live in one of the best neighbourhoods to capitalise on local haunts.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Yell At Me If You…</h2>
+      <ul class="shouts">
+        <li>have something you'd like me to <span class="highlight" data-tip="I love a side hustle." tabindex="0">build</span></li>
+        <li>have a <span class="highlight alt-1" data-tip="There was a time I could run Luigi Raceway in Mario Kart 64 blindfolded in under 2.5 minutes." tabindex="0">high score</span> you think I can't beat</li>
+        <li>have a kid with a toy I could write a <span class="highlight alt-2" data-tip="Does your child also bring their favourite stuffed animal to spaghetti dinners? I have a cautionary tale about the saucy noodle monsters of Tah-Bel." tabindex="0">silly story</span> about</li>
+        <li>have a <span class="highlight alt-3" data-tip="Bistecca in Sydney. Go. Thank me later." tabindex="0">recommendation</span> for a book/movie/city/restaurant/person/tree/animal/gadget/tradie that's just extraordinary</li>
+        <li>just want a <span class="highlight" data-tip="Have an indie game you love? Or a book? Or a recipe? I'd love to hear about it." tabindex="0">chat</span> about any of the above</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Contact</h2>
+      <p>Drop me a line at <span id="copy" data-email="james.o.middlemiss@gmail.com">james.o.middlemiss@gmail.com</span></p>
+      <p>Check out my code on <a href="https://github.com/batshoes">GitHub</a></p>
+    </div>
+
+    <p class="konami-banner">Konami Codified — the crab has been fed</p>
+
+    <footer>
+      <span>© James Middlemiss 2026</span>
+      <span>All careers rise. One traverses.</span>
+    </footer>
+  </main>
+
+  <a class="crab" href="../../church-of-the-lateral-ascension/" title="The Church of the Lateral Ascension" aria-label="The Church of the Lateral Ascension">🦀</a>
+
+  <script>
+    document.addEventListener('click', (event) => {
+      if (!event.target.matches('#copy') || !navigator.clipboard) return;
+      const el = event.target;
+      navigator.clipboard.writeText(el.dataset.email);
+      el.innerText = 'Copied to clipboard!';
+      setTimeout(() => { el.innerText = el.dataset.email; }, 1200);
+    });
+
+    (function konamify(code) {
+      let buffer = [];
+      let lastKeyTime = Date.now();
+      document.addEventListener('keydown', (event) => {
+        const now = Date.now();
+        if (now - lastKeyTime > 1000) buffer = [];
+        lastKeyTime = now;
+        buffer.push(event.key.toLowerCase());
+        if (buffer.join('').endsWith(code)) document.body.classList.add('konamified');
+      });
+    })('arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightbaenter');
+  </script>
+</body>
+</html>
