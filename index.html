@@ -1,109 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <!-- Google Tag Manager -->
-<script>(function (w, d, s, l, i) {
-    w[l] = w[l] || []; w[l].push({
-      'gtm.start':
-        new Date().getTime(), event: 'gtm.js'
-    }); var f = d.getElementsByTagName(s)[0],
-      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-  })(window, document, 'script', 'dataLayer', 'GTM-M5D6MQ3');</script>
-<!-- End Google Tag Manager -->
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-M5D6MQ3');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>James Middlemiss</title>
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="https://unpkg.com/tippy.js@4/themes/light-border.css" />
-  <script src="https://unpkg.com/popper.js@1"></script>
-  <script src="https://unpkg.com/tippy.js@4"></script>
-  <script src="assets/scripts/main.js"></script>
-  <script src="https://gist.githubusercontent.com/batshoes/7592e7bf1567568fdd1ec7fd5287cfb2/raw/2b522eea018cd076bd0207935238674f065dfe89/konamify.js"></script>
+  <meta name="description" content="James Middlemiss. Software engineer. Ruby on Rails. Insert coin to continue.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --panel: #0f1520;
+      --text: #c8d3e0;
+      --dim: #5c6b80;
+      --green: #45e06f;
+      --amber: #ffb454;
+      --cyan: #59c2ff;
+      --magenta: #ff7eb6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1rem;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* CRT scanlines + vignette */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      background:
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px);
+      mix-blend-mode: multiply;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 11;
+      background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
+    }
+
+    main {
+      max-width: 46rem;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .boot {
+      color: var(--dim);
+      font-size: 0.8rem;
+      margin-bottom: 2.5rem;
+    }
+    .boot .ok { color: var(--green); }
+
+    h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(1.2rem, 4.5vw, 2rem);
+      color: var(--green);
+      text-shadow: 0 0 12px rgba(69, 224, 111, 0.45);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .tagline {
+      color: var(--dim);
+      margin-bottom: 3rem;
+    }
+    .tagline::after {
+      content: '█';
+      color: var(--green);
+      animation: blink 1.1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    section { margin-bottom: 2.5rem; }
+
+    h2 {
+      color: var(--cyan);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.75rem;
+    }
+    h2::before { content: '~$ '; color: var(--dim); }
+
+    p { margin-bottom: 1rem; }
+
+    .highlight {
+      color: var(--amber);
+      font-weight: 600;
+    }
+
+    a { color: var(--cyan); text-decoration: none; border-bottom: 1px dashed var(--cyan); }
+    a:hover { color: var(--magenta); border-color: var(--magenta); }
+
+    /* Tooltips */
+    [data-tip] { position: relative; cursor: help; }
+    [data-tip]::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      width: max-content;
+      max-width: min(22rem, 80vw);
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--green);
+      box-shadow: 0 0 18px rgba(69, 224, 111, 0.25);
+      padding: 0.6rem 0.8rem;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      font-weight: 400;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      z-index: 20;
+      white-space: normal;
+    }
+    [data-tip]:hover::after, [data-tip]:focus::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    ul.quest-log { list-style: none; }
+    ul.quest-log li { padding-left: 1.6rem; position: relative; margin-bottom: 0.6rem; }
+    ul.quest-log li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--magenta);
+    }
+
+    #copy {
+      color: var(--green);
+      cursor: copy;
+      border-bottom: 1px dashed var(--green);
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #1c2635;
+      color: var(--dim);
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .konami-banner {
+      display: none;
+      margin-top: 2rem;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.9rem;
+      color: var(--magenta);
+      text-shadow: 0 0 14px rgba(255, 126, 182, 0.6);
+      animation: blink 0.6s steps(1) infinite;
+    }
+    body.konamified .konami-banner { display: block; }
+    body.konamified h1 { animation: hueshift 3s linear infinite; }
+    @keyframes hueshift { to { filter: hue-rotate(360deg); } }
+  </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5D6MQ3" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div class="grid-container">
-    <!-- Left Well -->
-    <div></div>
-    <div>
-      <h1>James Middlemiss</h1>
-      <p>
-        G'day. I'm James Middlemiss. I'm a software engineer with primary focus on <span class="highlight">Ruby on Rails</span>. 
-      </p>
-      <p>
-        I spend my weekdays as a <span class="highlight job-description">Senior Backend Engineer</span> building new features with strong TDD protocol. 
-        Integrating and consuming third party API's with some of Australia's largest brands. I've been doing this for 8 years now, and am loving every minute. 
-      </p>  
-      <p>
-        <!-- Rest of Time blurb -->
-        The rest of my time is spent divided amoungst various interests. 
-      </p>
-      <p>
-        <!-- New Things -->
-        I like seeing how things work, particularly different programming solutions to varied problems and gadgets I can take apart. Figuring out how something works by
-        deconstructing and rebuilding it, either digitally or physically, is super gratifying and drives me to do my job better.
-      </p>
-      <p>
-        <!-- Books -->
-        <span class="highlight interest-books">Reading</span> expands the world when travel is impermissible. The right book can transport you to another 
-        world in an instant or provide perspectives unobtainable otherwise.
-      </p>
-      <p>
-        <!-- Vidya Games -->
-        When I have the time, I really enjoy <span class="highlight interest-gaming">video games</span>. Who doesn't? I think that the best games can
-        be immersive and vivid as the best books or films.
-      </p>
-      <p>
-        <!-- Georgia -->
-        I sometimes <span class="highlight interest-writing">write silly stories and songs</span> for my daughters, Georgia and Sophie. They're the best kids I've met, and that's totally unbiased. Straight facts.
-      </p>
-      <p>
-        <!-- Food -->
-        I love <span class="highlight interest-food">all things food</span> and live in one of the best neighbourhoods to capitalise on local haunts. Forever searching 
-        for the next tasty morsel, I can't wait to anything new and exciting.
-      </p>
-      <p>
-        If you 
-        <ul class="list">
-          <li>have got something you'd like me to <span class="highlight contact-build">build</span>.</li>
-          <li>have a <span class="highlight contact-highscore">high score</span> you think I can't beat.</li>
-          <li>have a kid with a toy you think I could write a <span class="highlight contact-story">silly story</span> about.</li>
-          <li>have a <span class="highlight contact-recommendations">recommendation</span> for a book/movie/city/restuarant/person/tree/animal/gadget/tradie you think is just extraordinary.</li>
-          <li>just want to have a <span class="highlight contact-chat">chat</span> about something from above.</li>
-        </ul>
-      </p>
-      <p>
-        Drop me a line at <br>
-        <span id="copy" class="highlight">james.o.middlemiss@gmail.com</span>
-      </p>
-
-      <p>
-        Check out my code on <br>
-        <a href="https://github.com/batshoes" class="highlight">GitHub</a>
-      </p>
-        
-      <!-- <p>
-        Do @ me on Twitter <br>
-        <a href="https://twitter.com/batshoes" class="highlight">@batshoes</a>
-      </p>
-         -->
-      
-    </div>
-    <!-- Right Well -->
-    <div></div>
-    
-    <!-- Footer -->
-    <div class="footer">
-      <p>© James Middlemiss 2023</p>
-      <div class="konamify">
-        <h3>Konami Codified.</h3>
-      </div>
+  <main>
+    <div class="boot">
+      LOADING BATSHOES.APP v2026.1 ......... <span class="ok">OK</span><br>
+      MOUNTING /home/james ................. <span class="ok">OK</span><br>
+      INSERT COIN TO CONTINUE
     </div>
 
-  </div>
+    <h1>JAMES MIDDLEMISS</h1>
+    <p class="tagline">software engineer &middot; sydney, australia&nbsp;</p>
+
+    <section>
+      <h2>whoami</h2>
+      <p>
+        G'day. I'm a software engineer with a primary focus on <span class="highlight">Ruby on Rails</span>.
+        I spend my weekdays as a <span class="highlight" data-tip="While Ruby on Rails and Vue.js are my fav's, I'm always into learning more." tabindex="0">Senior Backend Engineer</span>,
+        building new features with a strong TDD protocol and integrating third-party APIs with some of Australia's largest brands.
+        I've been doing this for over a decade now, and I'm loving every minute.
+      </p>
+    </section>
+
+    <section>
+      <h2>side_quests</h2>
+      <p>
+        I like seeing how things work — different programming solutions to varied problems, and gadgets I can take apart.
+        Figuring something out by deconstructing and rebuilding it, digitally or physically, is super gratifying and drives me to do my job better.
+      </p>
+      <p>
+        <span class="highlight" data-tip="Masters of Doom is a favourite — the two Johns' path from unfortuitous upbringings to creators of gaming history." tabindex="0">Reading</span>
+        expands the world when travel is impermissible. The right book can transport you somewhere else in an instant, or hand you a perspective you'd never find otherwise.
+      </p>
+      <p>
+        When I have the time, I really enjoy <span class="highlight" data-tip="Ask me what's on top of the backlog at the moment. There was a time I could run Luigi Raceway in Mario Kart 64 blindfolded in under 2.5 minutes." tabindex="0">video games</span>.
+        Who doesn't? The best games are as immersive and vivid as the best books or films.
+      </p>
+      <p>
+        I sometimes <span class="highlight" data-tip="Peg Leg Meg is my daughters' plushy puppy with a toilet-roll peg leg. She has adventures in shopping-trolley pirate ships, on castaway islands on the living-room rug, or stranded at sea when we left her in the car overnight." tabindex="0">write silly stories and songs</span>
+        for my daughters, Georgia and Sophie. They're the best kids I've met, and that's totally unbiased. Straight facts.
+      </p>
+      <p>
+        I love <span class="highlight" data-tip="Forever hunting the next tasty morsel. Ask me for my 'best of' lists — NYC is done, Sydney is a work in progress." tabindex="0">all things food</span>
+        and live in one of the best neighbourhoods to capitalise on local haunts.
+      </p>
+    </section>
+
+    <section>
+      <h2>new_game --with-friends</h2>
+      <p>Press start if you:</p>
+      <ul class="quest-log">
+        <li>have something you'd like me to <span class="highlight" data-tip="I love a side hustle." tabindex="0">build</span></li>
+        <li>have a <span class="highlight" data-tip="There was a time I could run Luigi Raceway in Mario Kart 64 blindfolded in under 2.5 minutes." tabindex="0">high score</span> you think I can't beat</li>
+        <li>have a kid with a toy you think I could write a <span class="highlight" data-tip="Does your child also bring their favourite stuffed animal to spaghetti dinners? I have a cautionary tale that will keep even the most beloved fluffy animal at arms length from the saucy noodle monsters of Tah-Bel." tabindex="0">silly story</span> about</li>
+        <li>have a <span class="highlight" data-tip="Bistecca in Sydney. Go. Thank me later." tabindex="0">recommendation</span> for a book/movie/city/restaurant/person/tree/animal/gadget/tradie you think is just extraordinary</li>
+        <li>just want to have a <span class="highlight" data-tip="Have an indie game you love? Or a book? Or a recipe? I'd love to hear about it." tabindex="0">chat</span> about any of the above</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>contact</h2>
+      <p>Drop me a line at <span id="copy" data-email="james.o.middlemiss@gmail.com">james.o.middlemiss@gmail.com</span></p>
+      <p>Check out my code on <a href="https://github.com/batshoes">GitHub</a></p>
+    </section>
+
+    <p class="konami-banner">⭑ 30 LIVES GRANTED. KONAMI CODIFIED. ⭑</p>
+
+    <footer>
+      <span>© James Middlemiss 2026</span>
+      <span>↑ ↑ ↓ ↓ ← → ← → B A</span>
+    </footer>
+  </main>
+
+  <script>
+    // Copy email to clipboard
+    document.addEventListener('click', (event) => {
+      if (!event.target.matches('#copy') || !navigator.clipboard) return;
+      const el = event.target;
+      navigator.clipboard.writeText(el.dataset.email);
+      el.innerText = 'Copied to clipboard!';
+      setTimeout(() => { el.innerText = el.dataset.email; }, 1200);
+    });
+
+    // Konami code
+    (function konamify(code) {
+      let buffer = [];
+      let lastKeyTime = Date.now();
+      document.addEventListener('keydown', (event) => {
+        const now = Date.now();
+        if (now - lastKeyTime > 1000) buffer = [];
+        lastKeyTime = now;
+        buffer.push(event.key.toLowerCase());
+        if (buffer.join('').endsWith(code)) document.body.classList.add('konamified');
+      });
+    })('arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightbaenter');
+  </script>
 </body>
 </html>
