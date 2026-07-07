@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>batshoes.app — Theme Fitting Room</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #14181f;
+      color: #e8ecf2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    p.sub { color: #8b96a5; margin-bottom: 2.5rem; text-align: center; }
+    .rack { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); max-width: 60rem; width: 100%; }
+    a.fit {
+      display: block;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      border: 1px solid #2a3140;
+      transition: transform 0.15s ease;
+    }
+    a.fit:hover { transform: translateY(-4px); }
+    a.fit h2 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+    a.fit span { font-size: 0.9rem; line-height: 1.5; display: block; }
+    .player-one { background: #0a0e14; }
+    .player-one h2 { color: #45e06f; font-family: monospace; }
+    .player-one span { color: #5c6b80; }
+    .sunday-paper { background: #faf5ec; }
+    .sunday-paper h2 { color: #c2482d; font-family: Georgia, serif; }
+    .sunday-paper span { color: #857c6e; }
+    .sideways { background: #ffd93b; }
+    .sideways h2 { color: #111; text-transform: uppercase; }
+    .sideways span { color: #4a4530; }
+  </style>
+</head>
+<body>
+  <h1>Theme Fitting Room</h1>
+  <p class="sub">Three candidate looks for batshoes.app. Same James, different outfits.</p>
+  <div class="rack">
+    <a class="fit player-one" href="player-one/">
+      <h2>~$ player-one</h2>
+      <span>Retro terminal / CRT. Scanlines, phosphor glow, boot sequence. For the Konami-code enjoyer.</span>
+    </a>
+    <a class="fit sunday-paper" href="sunday-paper/">
+      <h2>Sunday Paper</h2>
+      <span>Warm editorial broadsheet. Serif type, drop caps, classifieds. For the reader &amp; storyteller.</span>
+    </a>
+    <a class="fit sideways" href="sideways/">
+      <h2>Sideways</h2>
+      <span>Loud neo-brutalist sticker board. Comes with a resident crab. 🦀</span>
+    </a>
+  </div>
+</body>
+</html>
