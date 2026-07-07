@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>James Middlemiss — The Codex</title>
+  <meta name="description" content="Ye olde codex of James Middlemiss: engineer of software, teller of silly tales, seeker of tasty morsels.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --parchment: #f0e3c4;
+      --parchment-dark: #e4d3a8;
+      --ink: #3a2b1a;
+      --faded: #7d6a4d;
+      --crimson: #8c2b1e;
+      --gold: #9a742a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background:
+        radial-gradient(ellipse at 15% 10%, rgba(122, 96, 55, 0.18) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 90%, rgba(122, 96, 55, 0.22) 0%, transparent 45%),
+        radial-gradient(ellipse at center, var(--parchment) 55%, var(--parchment-dark) 100%);
+      color: var(--ink);
+      font-family: 'IM Fell English', Georgia, serif;
+      font-size: 1.25rem;
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    .frame {
+      max-width: 46rem;
+      margin: 2.5rem auto;
+      padding: 3rem 2.5rem 3.5rem;
+      border: 3px double var(--crimson);
+      outline: 1px solid var(--gold);
+      outline-offset: 6px;
+      position: relative;
+    }
+    @media (max-width: 40rem) {
+      .frame { margin: 1rem 0.75rem; padding: 2rem 1.25rem; }
+    }
+
+    .corner { position: absolute; color: var(--gold); font-size: 1.1rem; user-select: none; }
+    .corner.tl { top: 0.4rem; left: 0.6rem; }
+    .corner.tr { top: 0.4rem; right: 0.6rem; }
+    .corner.bl { bottom: 0.4rem; left: 0.6rem; }
+    .corner.br { bottom: 0.4rem; right: 0.6rem; }
+
+    .incipit {
+      text-align: center;
+      color: var(--crimson);
+      font-variant: small-caps;
+      letter-spacing: 0.25em;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'UnifrakturMaguntia', serif;
+      font-weight: 400;
+      font-size: clamp(2.6rem, 8vw, 4.2rem);
+      text-align: center;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .subtitle {
+      text-align: center;
+      font-style: italic;
+      color: var(--faded);
+      margin-bottom: 2.25rem;
+    }
+
+    .fleuron { text-align: center; color: var(--crimson); font-size: 1.3rem; margin: 2rem 0; user-select: none; }
+
+    p { margin-bottom: 1.3rem; text-align: justify; hyphens: auto; }
+
+    .lede::first-letter {
+      font-family: 'UnifrakturMaguntia', serif;
+      font-size: 3.6em;
+      float: left;
+      line-height: 0.75;
+      padding: 0.08em 0.12em 0 0;
+      color: var(--crimson);
+    }
+
+    h2 {
+      font-family: 'IM Fell English', serif;
+      font-variant: small-caps;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      font-size: 1.5rem;
+      text-align: center;
+      color: var(--crimson);
+      margin: 2.2rem 0 1.1rem;
+    }
+    h2::before { content: '❦ '; color: var(--gold); }
+    h2::after  { content: ' ❦'; color: var(--gold); }
+
+    .highlight {
+      color: var(--crimson);
+      font-weight: 400;
+      border-bottom: 1px dotted var(--crimson);
+    }
+
+    a { color: var(--crimson); }
+
+    /* Marginalia tooltips */
+    [data-tip] { position: relative; cursor: help; }
+    [data-tip]::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      width: max-content;
+      max-width: min(23rem, 78vw);
+      background: var(--ink);
+      color: var(--parchment);
+      padding: 0.7rem 1rem;
+      font-size: 0.85rem;
+      font-style: italic;
+      line-height: 1.55;
+      border: 1px solid var(--gold);
+      box-shadow: 0 6px 22px rgba(58, 43, 26, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      z-index: 20;
+      white-space: normal;
+      text-align: left;
+    }
+    [data-tip]:hover::after, [data-tip]:focus::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    ul.decree {
+      list-style: none;
+      margin: 0 0 1.3rem;
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+    }
+    ul.decree li { padding: 0.4rem 0 0.4rem 1.7rem; position: relative; }
+    ul.decree li::before {
+      content: '✠';
+      position: absolute;
+      left: 0.1rem;
+      color: var(--gold);
+    }
+
+    #copy {
+      color: var(--crimson);
+      cursor: copy;
+      border-bottom: 1px dotted var(--crimson);
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-style: italic;
+      color: var(--faded);
+      font-size: 0.95rem;
+    }
+
+    .konami-banner {
+      display: none;
+      text-align: center;
+      font-family: 'UnifrakturMaguntia', serif;
+      font-size: 1.7rem;
+      color: var(--crimson);
+      margin-top: 2rem;
+      transform: rotate(-1.5deg);
+      border: 3px double var(--crimson);
+      padding: 0.75rem;
+    }
+    body.konamified .konami-banner { display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <span class="corner tl">❧</span><span class="corner tr">❧</span>
+    <span class="corner bl">❧</span><span class="corner br">❧</span>
+
+    <p class="incipit">Incipit liber Jacobi</p>
+    <h1>James Middlemiss</h1>
+    <p class="subtitle">Engineer of Software · Teller of Silly Tales · Seeker of Tasty Morsels</p>
+
+    <p class="lede">
+      G'day, traveller. I am a software engineer with a primary focus on <span class="highlight">Ruby on Rails</span>.
+      I spend my weekdays as a <span class="highlight" data-tip="While Ruby on Rails and Vue.js are my fav's, I'm always into learning more." tabindex="0">Senior Backend Engineer</span>,
+      building new features with a strong TDD protocol and integrating third-party APIs with some of Australia's largest brands.
+      Over a decade have I laboured at this craft, and I'm loving every minute.
+    </p>
+
+    <h2>Of Idle Hours</h2>
+    <p>
+      I like seeing how things work — different programming solutions to varied problems, and gadgets I can take apart.
+      Figuring something out by deconstructing and rebuilding it, digitally or physically, is super gratifying and drives me to do my job better.
+    </p>
+    <p>
+      <span class="highlight" data-tip="Masters of Doom is a favourite — the two Johns' path from unfortuitous upbringings to creators of gaming history." tabindex="0">Reading</span>
+      expands the world when travel is impermissible. The right book can transport you somewhere else in an instant, or hand you a perspective you'd never find otherwise.
+      And when I have the time, I really enjoy <span class="highlight" data-tip="Ask me what's on top of the backlog at the moment. There was a time I could run Luigi Raceway in Mario Kart 64 blindfolded in under 2.5 minutes." tabindex="0">video games</span> —
+      the best are as immersive and vivid as the best books or films.
+    </p>
+    <p>
+      I sometimes <span class="highlight" data-tip="Peg Leg Meg is my daughters' plushy puppy with a toilet-roll peg leg. She has adventures in shopping-trolley pirate ships, on castaway islands on the living-room rug, or stranded at sea when we left her in the car overnight." tabindex="0">write silly stories and songs</span>
+      for my daughters, Georgia and Sophie. They're the best kids I've met, and that's totally unbiased. Straight facts.
+    </p>
+    <p>
+      I love <span class="highlight" data-tip="Forever hunting the next tasty morsel. Ask me for my 'best of' lists — NYC is done, Sydney is a work in progress." tabindex="0">all things food</span>
+      and live in one of the best neighbourhoods to capitalise on local haunts.
+    </p>
+
+    <h2>A Decree unto the Reader</h2>
+    <p>Let it be known that thou shouldst make contact if thou:</p>
+    <ul class="decree">
+      <li>hast something thou wouldst have me <span class="highlight" data-tip="I love a side hustle." tabindex="0">build</span></li>
+      <li>hast a <span class="highlight" data-tip="There was a time I could run Luigi Raceway in Mario Kart 64 blindfolded in under 2.5 minutes." tabindex="0">high score</span> thou thinkest I cannot best</li>
+      <li>hast a child with a toy deserving of a <span class="highlight" data-tip="Does your child also bring their favourite stuffed animal to spaghetti dinners? I have a cautionary tale about the saucy noodle monsters of Tah-Bel." tabindex="0">silly story</span></li>
+      <li>hast a <span class="highlight" data-tip="Bistecca in Sydney. Go. Thank me later." tabindex="0">recommendation</span> for a book/movie/city/restaurant/person/tree/animal/gadget/tradie most extraordinary</li>
+      <li>simply desirest a <span class="highlight" data-tip="Have an indie game you love? Or a book? Or a recipe? I'd love to hear about it." tabindex="0">chat</span> about any of the above</li>
+    </ul>
+
+    <p style="text-align:center">
+      Send forth thy raven to<br>
+      <span id="copy" data-email="james.o.middlemiss@gmail.com">james.o.middlemiss@gmail.com</span><br><br>
+      or peruse mine scrolls upon <a href="https://github.com/batshoes">GitHub</a>
+    </p>
+
+    <p class="konami-banner">Huzzah! Thou art Konami Codified!</p>
+
+    <p class="fleuron">❦ ❦ ❦</p>
+
+    <footer>
+      <p>Scribed in the village of Sydney · © James Middlemiss, Anno Domini MMXXVI</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('click', (event) => {
+      if (!event.target.matches('#copy') || !navigator.clipboard) return;
+      const el = event.target;
+      navigator.clipboard.writeText(el.dataset.email);
+      el.innerText = 'Inscribed to thy clipboard!';
+      setTimeout(() => { el.innerText = el.dataset.email; }, 1200);
+    });
+
+    (function konamify(code) {
+      let buffer = [];
+      let lastKeyTime = Date.now();
+      document.addEventListener('keydown', (event) => {
+        const now = Date.now();
+        if (now - lastKeyTime > 1000) buffer = [];
+        lastKeyTime = now;
+        buffer.push(event.key.toLowerCase());
+        if (buffer.join('').endsWith(code)) document.body.classList.add('konamified');
+      });
+    })('arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightbaenter');
+  </script>
+</body>
+</html>

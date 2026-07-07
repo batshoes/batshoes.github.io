@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>James Middlemiss — Quest Log</title>
+  <meta name="description" content="James Middlemiss. Level 11+ Backend Engineer of the Sydney Guild. Accepting side quests.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --night: #14100d;
+      --panel: #1f1812;
+      --panel-edge: #3d3122;
+      --parchment: #e8dcc3;
+      --faded: #9c8c6e;
+      --gold: #d4a94e;
+      --ember: #ff8c42;
+      --crimson: #c0392b;
+      --emerald: #58b368;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background:
+        radial-gradient(ellipse at 20% 0%, #241b12 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 100%, #1d1409 0%, transparent 50%),
+        var(--night);
+      color: var(--parchment);
+      font-family: 'Alegreya', Georgia, serif;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* candlelight vignette */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.5) 100%);
+      z-index: 5;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 46rem;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .banner-rule {
+      text-align: center;
+      color: var(--gold);
+      letter-spacing: 0.5em;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      user-select: none;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 7vw, 3.6rem);
+      text-align: center;
+      color: var(--gold);
+      text-shadow: 0 0 24px rgba(212, 169, 78, 0.35);
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+
+    .title-sub {
+      text-align: center;
+      font-style: italic;
+      color: var(--faded);
+      margin-bottom: 2rem;
+    }
+
+    /* Character sheet chips */
+    .sheet {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 3rem;
+    }
+    .stat {
+      border: 1px solid var(--panel-edge);
+      background: var(--panel);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faded);
+      border-radius: 3px;
+    }
+    .stat b { color: var(--gold); font-weight: 700; letter-spacing: 0.05em; }
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--panel-edge);
+      border-radius: 4px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      position: relative;
+    }
+    /* corner rivets */
+    section::before, section::after {
+      content: '◆';
+      position: absolute;
+      color: var(--panel-edge);
+      font-size: 0.7rem;
+    }
+    section::before { top: 0.5rem; left: 0.6rem; }
+    section::after { top: 0.5rem; right: 0.6rem; }
+
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ember);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    h2::before { content: '⚔ '; color: var(--faded); }
+    h2::after  { content: ' ⚔'; color: var(--faded); }
+
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    .highlight {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    a { color: var(--ember); text-decoration: none; border-bottom: 1px dotted var(--ember); }
+    a:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* Tooltips — tavern rumour style */
+    [data-tip] { position: relative; cursor: help; border-bottom: 1px dotted var(--gold); }
+    [data-tip]::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      width: max-content;
+      max-width: min(23rem, 80vw);
+      background: #0e0b08;
+      color: var(--parchment);
+      border: 1px solid var(--gold);
+      box-shadow: 0 0 20px rgba(212, 169, 78, 0.25);
+      padding: 0.65rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      line-height: 1.55;
+      border-radius: 3px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      z-index: 20;
+      white-space: normal;
+    }
+    [data-tip]:hover::after, [data-tip]:focus::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    ul.quests { list-style: none; }
+    ul.quests li {
+      padding: 0.55rem 0 0.55rem 2rem;
+      position: relative;
+    }
+    ul.quests li + li { border-top: 1px solid #2a2118; }
+    ul.quests li::before {
+      content: '❖';
+      position: absolute;
+      left: 0.3rem;
+      color: var(--emerald);
+    }
+
+    #copy {
+      color: var(--gold);
+      font-weight: 700;
+      cursor: copy;
+      border-bottom: 1px dotted var(--gold);
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--faded);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+    footer .rule { color: var(--panel-edge); letter-spacing: 0.4em; margin-bottom: 0.5rem; }
+
+    .konami-banner {
+      display: none;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--emerald);
+      text-shadow: 0 0 18px rgba(88, 179, 104, 0.6);
+      border: 1px solid var(--emerald);
+      border-radius: 4px;
+      padding: 1rem;
+      margin-top: 2rem;
+      animation: levelup 1.2s ease infinite alternate;
+    }
+    @keyframes levelup {
+      from { box-shadow: 0 0 8px rgba(88, 179, 104, 0.2); }
+      to   { box-shadow: 0 0 28px rgba(88, 179, 104, 0.55); }
+    }
+    body.konamified .konami-banner { display: block; }
+    body.konamified h1 { animation: goldpulse 2s ease infinite alternate; }
+    @keyframes goldpulse {
+      from { text-shadow: 0 0 24px rgba(212, 169, 78, 0.35); }
+      to   { text-shadow: 0 0 42px rgba(212, 169, 78, 0.8); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="banner-rule">✦ ✦ ✦</p>
+    <h1>James Middlemiss</h1>
+    <p class="title-sub">Herein lie the deeds and side quests of a backend engineer of the southern realms</p>
+
+    <div class="sheet">
+      <span class="stat">Class <b>Senior Backend Engineer</b></span>
+      <span class="stat">Level <b>11+</b></span>
+      <span class="stat">Guild <b>Sydney</b></span>
+      <span class="stat">Weapon <b>Ruby on Rails</b></span>
+      <span class="stat">Alignment <b>Chaotic Culinary</b></span>
+    </div>
+
+    <section>
+      <h2>The Chronicle</h2>
+      <p>
+        G'day. I'm a software engineer with a primary focus on <span class="highlight">Ruby on Rails</span>.
+        I spend my weekdays as a <span class="highlight" data-tip="While Ruby on Rails and Vue.js are my fav's, I'm always into learning more." tabindex="0">Senior Backend Engineer</span>,
+        building new features with a strong TDD protocol and integrating third-party APIs with some of Australia's largest brands.
+        Over a decade into this campaign, and I'm loving every minute.
+      </p>
+    </section>
+
+    <section>
+      <h2>Side Quests</h2>
+      <p>
+        I like seeing how things work — different programming solutions to varied problems, and gadgets I can take apart.
+        Figuring something out by deconstructing and rebuilding it, digitally or physically, is super gratifying and drives me to do my job better.
+      </p>
+      <p>
+        <span class="highlight" data-tip="Masters of Doom is a favourite — the two Johns' path from unfortuitous upbringings to creators of gaming history." tabindex="0">Reading</span>
+        expands the world when travel is impermissible. The right tome can transport you somewhere else in an instant, or hand you a perspective you'd never find otherwise.
+      </p>
+      <p>
+        When I have the time, I really enjoy <span class="highlight" data-tip="Ask me what's on top of the backlog at the moment. There was a time I could run Luigi Raceway in Mario Kart 64 blindfolded in under 2.5 minutes." tabindex="0">video games</span>.
+        Who doesn't? The best games are as immersive and vivid as the best books or films.
+      </p>
+      <p>
+        I sometimes <span class="highlight" data-tip="Peg Leg Meg is my daughters' plushy puppy with a toilet-roll peg leg. She has adventures in shopping-trolley pirate ships, on castaway islands on the living-room rug, or stranded at sea when we left her in the car overnight." tabindex="0">write silly stories and songs</span>
+        for my daughters, Georgia and Sophie. The finest younglings in all the realm, and that's totally unbiased. Straight facts.
+      </p>
+      <p>
+        I love <span class="highlight" data-tip="Forever hunting the next tasty morsel. Ask me for my 'best of' lists — NYC is done, Sydney is a work in progress." tabindex="0">all things food</span>
+        and dwell in one of the finest villages for local haunts and tasty provisions.
+      </p>
+    </section>
+
+    <section>
+      <h2>The Notice Board</h2>
+      <p>Adventurers wanted. Apply within if you:</p>
+      <ul class="quests">
+        <li>have something you'd like me to <span class="highlight" data-tip="I love a side hustle." tabindex="0">build</span></li>
+        <li>have a <span class="highlight" data-tip="There was a time I could run Luigi Raceway in Mario Kart 64 blindfolded in under 2.5 minutes." tabindex="0">high score</span> you think I can't beat</li>
+        <li>have a kid with a toy you think I could write a <span class="highlight" data-tip="Does your child also bring their favourite stuffed animal to spaghetti dinners? I have a cautionary tale about the saucy noodle monsters of Tah-Bel." tabindex="0">silly story</span> about</li>
+        <li>have a <span class="highlight" data-tip="Bistecca in Sydney. Go. Thank me later." tabindex="0">recommendation</span> for a book/movie/city/restaurant/person/tree/animal/gadget/tradie you think is just extraordinary</li>
+        <li>just want to have a <span class="highlight" data-tip="Have an indie game you love? Or a book? Or a recipe? I'd love to hear about it." tabindex="0">chat</span> about any of the above</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Send a Raven</h2>
+      <p>Dispatch your raven to <span id="copy" data-email="james.o.middlemiss@gmail.com">james.o.middlemiss@gmail.com</span></p>
+      <p>Or inspect my scrolls on <a href="https://github.com/batshoes">GitHub</a></p>
+    </section>
+
+    <p class="konami-banner">⚜ LEVEL UP — THOU ART KONAMI CODIFIED ⚜</p>
+
+    <footer>
+      <p class="rule">✦ ✦ ✦</p>
+      <p>© James Middlemiss, Year of Our Backlog 2026</p>
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener('click', (event) => {
+      if (!event.target.matches('#copy') || !navigator.clipboard) return;
+      const el = event.target;
+      navigator.clipboard.writeText(el.dataset.email);
+      el.innerText = 'Inscribed to thy clipboard!';
+      setTimeout(() => { el.innerText = el.dataset.email; }, 1200);
+    });
+
+    (function konamify(code) {
+      let buffer = [];
+      let lastKeyTime = Date.now();
+      document.addEventListener('keydown', (event) => {
+        const now = Date.now();
+        if (now - lastKeyTime > 1000) buffer = [];
+        lastKeyTime = now;
+        buffer.push(event.key.toLowerCase());
+        if (buffer.join('').endsWith(code)) document.body.classList.add('konamified');
+      });
+    })('arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightbaenter');
+  </script>
+</body>
+</html>
