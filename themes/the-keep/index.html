@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>James Middlemiss — The Keep</title>
+  <meta name="description" content="James Middlemiss. Backend wizard of the Sydney realm. Enter the keep, mind the dragon.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --void: #101216;
+      --stone: #23262b;
+      --stone-hi: #3d424b;
+      --stone-lo: #1a1d21;
+      --mortar: rgba(0, 0, 0, 0.4);
+      --parchment: #e6dcc4;
+      --faded: #8f8875;
+      --gold: #d9ab4f;
+      --torch: #ff9b3d;
+      --ember: #ff6b35;
+      --arcane: #9d7bff;
+      --emerald: #58b368;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--stone);
+      /* stone block masonry */
+      background-image:
+        repeating-linear-gradient(0deg, transparent 0 46px, var(--mortar) 46px 49px),
+        repeating-linear-gradient(90deg, transparent 0 110px, rgba(0,0,0,0.28) 110px 113px),
+        radial-gradient(ellipse at 50% -10%, #33373e 0%, transparent 60%);
+      color: var(--parchment);
+      font-family: 'Alegreya', Georgia, serif;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* torchlight overlay — two warm glows that flicker */
+    .torchlight {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 4;
+      background:
+        radial-gradient(ellipse 40% 30% at 12% 8%, rgba(255, 155, 61, 0.14) 0%, transparent 100%),
+        radial-gradient(ellipse 40% 30% at 88% 8%, rgba(255, 155, 61, 0.14) 0%, transparent 100%),
+        radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.6) 100%);
+      animation: torchbreathe 3.4s ease-in-out infinite alternate;
+    }
+    @keyframes torchbreathe {
+      0%   { opacity: 0.85; }
+      37%  { opacity: 1; }
+      62%  { opacity: 0.8; }
+      100% { opacity: 0.95; }
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 46rem;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 6rem;
+    }
+
+    /* ---------- Gatehouse header ---------- */
+    header { text-align: center; margin-bottom: 3rem; position: relative; }
+
+    .torches {
+      display: flex;
+      justify-content: space-between;
+      max-width: 34rem;
+      margin: 0 auto 0.5rem;
+      font-size: 2rem;
+      user-select: none;
+    }
+    .torch {
+      display: inline-block;
+      animation: flicker 1.7s ease-in-out infinite;
+      filter: drop-shadow(0 0 14px rgba(255, 155, 61, 0.8));
+    }
+    .torch:last-child { animation-delay: 0.6s; animation-duration: 2.1s; }
+    @keyframes flicker {
+      0%, 100% { transform: scale(1) rotate(-2deg); }
+      30%      { transform: scale(1.08) rotate(2deg); }
+      55%      { transform: scale(0.96) rotate(-1deg); }
+      80%      { transform: scale(1.05) rotate(1.5deg); }
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 7vw, 3.6rem);
+      color: var(--gold);
+      text-shadow: 0 0 26px rgba(255, 155, 61, 0.4), 0 2px 0 #000;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    .title-sub {
+      font-style: italic;
+      color: var(--faded);
+      margin-top: 0.75rem;
+    }
+
+    /* Character sheet chips — carved stone tokens */
+    .sheet {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1.75rem;
+    }
+    .stat {
+      background: linear-gradient(160deg, var(--stone-hi), var(--stone-lo));
+      border: 1px solid #0d0f12;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.09), 0 3px 8px rgba(0,0,0,0.5);
+      padding: 0.35rem 0.9rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faded);
+      border-radius: 3px;
+    }
+    .stat b { color: var(--gold); font-weight: 700; }
+
+    /* ---------- Chambers (sections as stone slabs) ---------- */
+    section {
+      background: linear-gradient(165deg, var(--stone-hi) 0%, var(--stone-lo) 100%);
+      border: 1px solid #0d0f12;
+      border-radius: 5px;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -3px 10px rgba(0, 0, 0, 0.45),
+        0 14px 34px rgba(0, 0, 0, 0.55);
+      padding: 1.9rem 2.1rem;
+      margin-bottom: 2.25rem;
+      position: relative;
+    }
+    /* iron rivets in the corners */
+    .rivet {
+      position: absolute;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #6a7078, #23262b 70%);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.8);
+    }
+    .rivet.tl { top: 9px; left: 9px; }
+    .rivet.tr { top: 9px; right: 9px; }
+    .rivet.bl { bottom: 9px; left: 9px; }
+    .rivet.br { bottom: 9px; right: 9px; }
+
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 1.1rem;
+      /* chiseled into the stone */
+      color: #b9b29c;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.12), 0 -1px 1px rgba(0,0,0,0.9);
+    }
+    h2 .sigil { color: var(--torch); text-shadow: 0 0 12px rgba(255,155,61,0.5); }
+
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    .highlight { color: var(--gold); font-weight: 700; }
+    .arcane-word { color: var(--arcane); font-weight: 700; }
+
+    a { color: var(--torch); text-decoration: none; border-bottom: 1px dotted var(--torch); }
+    a:hover { color: var(--gold); border-color: var(--gold); }
+
+    /* Tooltips — whispers in the dark */
+    [data-tip] { position: relative; cursor: help; border-bottom: 1px dotted var(--gold); }
+    [data-tip]::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      width: max-content;
+      max-width: min(23rem, 80vw);
+      background: #0b0c0f;
+      color: var(--parchment);
+      border: 1px solid var(--gold);
+      box-shadow: 0 0 22px rgba(217, 171, 79, 0.25);
+      padding: 0.65rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      line-height: 1.55;
+      border-radius: 3px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      z-index: 20;
+      white-space: normal;
+    }
+    [data-tip]:hover::after, [data-tip]:focus::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    ul.quests { list-style: none; }
+    ul.quests li { padding: 0.55rem 0 0.55rem 2rem; position: relative; }
+    ul.quests li + li { border-top: 1px solid rgba(0,0,0,0.35); }
+    ul.quests li::before {
+      content: '🗝';
+      position: absolute;
+      left: 0.1rem;
+      filter: sepia(1) saturate(3) hue-rotate(-15deg);
+    }
+
+    #copy { color: var(--gold); font-weight: 700; cursor: copy; border-bottom: 1px dotted var(--gold); }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--faded);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+    footer .rule { color: #3d424b; letter-spacing: 0.4em; margin-bottom: 0.5rem; }
+
+    /* ---------- The resident dragon ---------- */
+    .dragon {
+      position: fixed;
+      top: 4.5rem;
+      left: -6rem;
+      font-size: 2.4rem;
+      z-index: 6;
+      pointer-events: none;
+      user-select: none;
+      animation: patrol 60s linear infinite;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
+    }
+    @keyframes patrol {
+      0%    { left: -6rem;              top: 4.5rem; transform: scaleX(-1); }
+      3%    { top: 3.5rem; }
+      6%    { top: 5rem; }
+      9%    { top: 4rem; }
+      12%   { left: calc(100% + 3rem);  top: 4.5rem; transform: scaleX(-1); }
+      12.1% { transform: scaleX(1); }
+      15%   { top: 3.5rem; }
+      18%   { top: 5rem; }
+      21%   { top: 4rem; }
+      24%   { left: -6rem;              top: 4.5rem; transform: scaleX(1); }
+      24.1% { transform: scaleX(-1); }
+      100%  { left: -6rem;              top: 4.5rem; transform: scaleX(-1); }
+    }
+    body.konamified .dragon { animation-duration: 8s; }
+
+    .konami-banner {
+      display: none;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: var(--emerald);
+      text-shadow: 0 0 18px rgba(88, 179, 104, 0.6);
+      border: 1px solid var(--emerald);
+      border-radius: 4px;
+      background: rgba(11, 12, 15, 0.7);
+      padding: 1rem;
+      margin-top: 2rem;
+      animation: wardglow 1.2s ease infinite alternate;
+    }
+    @keyframes wardglow {
+      from { box-shadow: 0 0 8px rgba(88, 179, 104, 0.2); }
+      to   { box-shadow: 0 0 30px rgba(88, 179, 104, 0.55); }
+    }
+    body.konamified .konami-banner { display: block; }
+    body.konamified h1 {
+      animation: arcanepulse 2s ease infinite alternate;
+    }
+    @keyframes arcanepulse {
+      from { text-shadow: 0 0 26px rgba(255, 155, 61, 0.4), 0 2px 0 #000; }
+      to   { text-shadow: 0 0 42px rgba(157, 123, 255, 0.85), 0 2px 0 #000; }
+    }
+  </style>
+</head>
+<body>
+  <div class="torchlight"></div>
+  <span class="dragon" aria-hidden="true">🐉</span>
+
+  <main>
+    <header>
+      <div class="torches" aria-hidden="true"><span class="torch">🔥</span><span class="torch">🔥</span></div>
+      <h1>James Middlemiss</h1>
+      <p class="title-sub">Backend wizard of the southern realms · keeper of this keep</p>
+
+      <div class="sheet">
+        <span class="stat">Class <b>Code Wizard</b></span>
+        <span class="stat">School <b>Backend</b></span>
+        <span class="stat">Level <b>11+</b></span>
+        <span class="stat">Guild <b>Sydney</b></span>
+        <span class="stat">Staff <b>Ruby on Rails +5</b></span>
+        <span class="stat">Familiar <b>Peg Leg Meg</b></span>
+      </div>
+    </header>
+
+    <section>
+      <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+      <h2><span class="sigil">🏰</span> The Great Hall</h2>
+      <p>
+        G'day, traveller — welcome to the keep. I'm a software engineer with a primary focus on <span class="highlight">Ruby on Rails</span>.
+        I spend my weekdays as a <span class="highlight" data-tip="While Ruby on Rails and Vue.js are my fav's, I'm always into learning more." tabindex="0">Senior Backend Engineer</span>,
+        conjuring new features with a strong TDD protocol and binding third-party APIs for some of Australia's largest brands.
+        Over a decade into this campaign, and I'm loving every minute.
+      </p>
+    </section>
+
+    <section>
+      <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+      <h2><span class="sigil">🧙</span> The Wizard's Study</h2>
+      <p>
+        I like discovering how things work — different programming <span class="arcane-word">incantations</span> for varied problems, and gadgets I can take apart.
+        Figuring something out by deconstructing and rebuilding it, digitally or physically, is super gratifying and drives me to do my job better.
+      </p>
+      <p>
+        <span class="highlight" data-tip="Masters of Doom is a favourite — the two Johns' path from unfortuitous upbringings to creators of gaming history." tabindex="0">Reading</span>
+        expands the world when travel is impermissible. The right tome can transport you to another realm in an instant, or hand you a perspective no scrying orb could offer.
+      </p>
+      <p>
+        When I have the time, I really enjoy <span class="highlight" data-tip="Ask me what's on top of the backlog at the moment. There was a time I could run Luigi Raceway in Mario Kart 64 blindfolded in under 2.5 minutes." tabindex="0">video games</span>.
+        Who doesn't? The best games are as immersive and vivid as the best books or films.
+      </p>
+      <p>
+        I sometimes <span class="highlight" data-tip="Peg Leg Meg is my daughters' plushy puppy with a toilet-roll peg leg. She has adventures in shopping-trolley pirate ships, on castaway islands on the living-room rug, or stranded at sea when we left her in the car overnight." tabindex="0">write silly stories and songs</span>
+        for my daughters, Georgia and Sophie — the two young sorceresses of the household. Best kids I've met, and that's totally unbiased. Straight facts.
+      </p>
+      <p>
+        I love <span class="highlight" data-tip="Forever hunting the next tasty morsel. Ask me for my 'best of' lists — NYC is done, Sydney is a work in progress." tabindex="0">all things food</span>
+        and my keep stands in one of the finest villages for local haunts and tasty provisions.
+      </p>
+    </section>
+
+    <section>
+      <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+      <h2><span class="sigil">📜</span> The Quest Board</h2>
+      <p>Adventurers wanted. Pull up a torch if you:</p>
+      <ul class="quests">
+        <li>have something you'd like me to <span class="highlight" data-tip="I love a side hustle." tabindex="0">build</span></li>
+        <li>have a <span class="highlight" data-tip="There was a time I could run Luigi Raceway in Mario Kart 64 blindfolded in under 2.5 minutes." tabindex="0">high score</span> you think I can't beat</li>
+        <li>have a kid with a toy you think I could write a <span class="highlight" data-tip="Does your child also bring their favourite stuffed animal to spaghetti dinners? I have a cautionary tale about the saucy noodle monsters of Tah-Bel." tabindex="0">silly story</span> about</li>
+        <li>have a <span class="highlight" data-tip="Bistecca in Sydney. Go. Thank me later." tabindex="0">recommendation</span> for a book/movie/city/restaurant/person/tree/animal/gadget/tradie you think is just extraordinary</li>
+        <li>just want to have a <span class="highlight" data-tip="Have an indie game you love? Or a book? Or a recipe? I'd love to hear about it." tabindex="0">chat</span> about any of the above</li>
+      </ul>
+    </section>
+
+    <section>
+      <span class="rivet tl"></span><span class="rivet tr"></span><span class="rivet bl"></span><span class="rivet br"></span>
+      <h2><span class="sigil">🐉</span> The Dragon's Hoard</h2>
+      <p>
+        Past the dragon (she's friendly, mostly) lies the treasure:
+        <span id="copy" data-email="james.o.middlemiss@gmail.com">james.o.middlemiss@gmail.com</span>
+      </p>
+      <p>My spellbooks are shelved on <a href="https://github.com/batshoes">GitHub</a></p>
+    </section>
+
+    <p class="konami-banner">⚜ THE DRAGON WAKES — THOU ART KONAMI CODIFIED ⚜</p>
+
+    <footer>
+      <p class="rule">✦ ✦ ✦</p>
+      <p>© James Middlemiss, Year of Our Backlog 2026 · No dragons were harmed in the making of this keep</p>
+    </footer>
+  </main>
+
+  <script>
+    document.addEventListener('click', (event) => {
+      if (!event.target.matches('#copy') || !navigator.clipboard) return;
+      const el = event.target;
+      navigator.clipboard.writeText(el.dataset.email);
+      el.innerText = 'Inscribed to thy clipboard!';
+      setTimeout(() => { el.innerText = el.dataset.email; }, 1200);
+    });
+
+    (function konamify(code) {
+      let buffer = [];
+      let lastKeyTime = Date.now();
+      document.addEventListener('keydown', (event) => {
+        const now = Date.now();
+        if (now - lastKeyTime > 1000) buffer = [];
+        lastKeyTime = now;
+        buffer.push(event.key.toLowerCase());
+        if (buffer.join('').endsWith(code)) document.body.classList.add('konamified');
+      });
+    })('arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightbaenter');
+  </script>
+</body>
+</html>
